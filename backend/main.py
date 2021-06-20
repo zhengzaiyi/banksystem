@@ -6,15 +6,10 @@ from flask import request, make_response
 from flask import render_template
 from flask import url_for
 from flask_sqlalchemy import SQLAlchemy
-from db import *
+from db import db
+from app import app
 
-# 生成一个app
-app = Flask(__name__, instance_relative_config=True)
-app.config.from_object(config)
-app.secret_key = 'lab3'
-db = SQLAlchemy(app)
-
-
+'''
 # 对app执行请求页面地址到函数的绑定
 @app.route("/", methods=("GET", "POST"))
 @app.route("/login", methods=("GET", "POST"))
@@ -119,13 +114,7 @@ def business_count():
 @app.route("/hello")
 def hello():
     return "hello world!"
-
-
-# 返回不存在页面的处理
-@app.errorhandler(404)
-def not_found(e):
-    return render_template("404.html")
-
+'''
 
 if __name__ == "__main__":
     app.run(host="127.0.0.1", debug=True)
